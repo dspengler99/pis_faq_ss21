@@ -52,3 +52,46 @@ Der Teil `switch(value)` spezifiziert dabei, dass ihr im folgenden Statements M�
 ### Google Style Guide
 Für die Formatierung von Quellcode gibt es verschiedenste Regelwerke. Relevant für die Veranstaltung Programmierung interaktiver Systeme ist der [Google-Style-Guide](https://google.github.io/styleguide/javaguide.html). Dieser definiert die Regeln, welchen eure Code-Formatierung folgen sollte.
 Mit Einhaltung der Konventionen sorgt ihr dafür, dass auch andere Personen euren Code gut lesen können.
+
+## Processing
+
+### Zeichnen in mehreren Klassen
+In Processing ist es möglich die Methode `draw` auf mehrere Klassen aufzuteilen, wenn ihr beispielsweise mehrere Objekte habt, welche ihr zeichnen wollt. Um dies zu ermöglichen, sollte aber nur eure Hauptklasse von `PApplet` erben. Hier könnt iher wie gehabt den folgenden Code ausführen:
+
+```java
+public void draw() {
+    // Do something
+}
+```
+
+Wenn ihr nun eine zweite Klasse habt, beispielsweise `Ball`, so importiert ihr in dieser Klasse `processing.core.PGraphics`. Die Draw-Methode ruft ihr dann wie folgt auf:
+
+```java
+public void draw(PGraphics g) {
+    // Draw something
+}
+```
+
+#### Was ist dieses `PGraphics`?
+Bei `PGraphics` handelt es sich um das Objekt, auf welches ihr zeichnet. In eurer Hauptklasse wird dies ohne weiteren Zusatz von euch getan, da ihr von `PApplet`erbt. In allen anderen "Subklassen" müsst ihr den Methodenkopf wie oben definiert schreiben. Dabei müsst ihr im Funktionskörper alle Methoden zum Zeichnen auf `g` anwenden. Hier ein kurzes Beispiel:
+
+```java
+public void draw(PGraphics g) {
+    g.ellipse(100.0f, 100.0f, 100.0f, 100.0f);
+    // ...
+}
+```
+
+Aufgerufen wird diese `draw`-Methode von eurer Hauptklasse dann wie folgt:
+
+```java
+public void draw() {
+    <className>.draw(super.g);
+}
+```
+
+> `<className>` ist dabei durch den Klassennamen der anderen `draw`-Methode auszutauschen!
+
+#### Ein längeres und vollständiges Beispiel
+Um den Ablauf von mehreren `draw `-Methoden zu verdeutlichen, findet ihr [hier](Blockbreaker/) ein vollständiges Beispiel, welches von mir im Rahmen der Projektwoche im Wintersemester 2019/2020 entstanden ist. Dieses ist vollständig lauffähig.
+
