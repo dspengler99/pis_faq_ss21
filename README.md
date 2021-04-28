@@ -3,7 +3,7 @@
 ## Generelles
 
 ### Struktur von Projekten
-Grundsätzlich ist es wichtig den Source-Code direkt zu Beginn eines Projekts richtig zu organisieren. Bei den aktuellen Projekten mag dies momentan "unnötig" erscheinen, gerade bei großen Projekten ist eine gute Struktur aber unabdinbar, da ihr ansonsten schnell den Überblick verlieren werdet.
+Grundsätzlich ist es wichtig den Source-Code direkt zu Beginn eines Projekts richtig zu organisieren. Bei den aktuellen Projekten mag dies momentan "unnötig" erscheinen, gerade bei großen Projekten ist eine gute Struktur aber unabdingbar, da ihr ansonsten schnell den Überblick verlieren werdet.
 
 Auch ist es wichtig, die einzelnen Projekte voneinander zu trennen. So ist es z.B. keine gute Struktur, wenn ihr ein Projekt aufsetzt, in welchem ihr den Code von mehreren Projekten ablegt. Legt lieber für jedes einzelne Projekt ein neues Projekt mit der IDE eurer Wahl an.
 
@@ -18,7 +18,7 @@ int add(int x, int y) { // doSomething wäre hier ein schlechter Name
     return x + y; //x und y sind einfach zwei Komponenten einer Gleichung, daher gibt es hier keinen besseren Namen
 }
 
-int result = add(5, 6); // Result speichert das Ergebnis einer Operation;
+int result = add(5, 6); // result speichert das Ergebnis einer Operation;
 ```
 
 ### Switch-Case statt if-else
@@ -38,10 +38,16 @@ Dieser Code ist gerade mit vielen Werten sehr unübersichtlich und erfordert jed
 int value = 7;
 switch(value) {
     case 0: System.out.println("Value is 0."); break;
-    case 1: System.out.println("Value is 1."); break;
+    case 1:
+        System.out.println("Value is 1.");
+        break;
     ...
-    case 7: System.out.println("Value is 7."); break;
-    default: System.out.println("Unknown value."); break;
+    case 7:
+        System.out.println("Value is 7.");
+        break;
+    default:
+        System.out.println("Unknown value.");
+        break;
 }
 ```
 
@@ -73,7 +79,7 @@ public void draw(PGraphics g) {
 ```
 
 #### Was ist dieses `PGraphics`?
-Bei `PGraphics` handelt es sich um das Objekt, auf welches ihr zeichnet. In eurer Hauptklasse wird dies ohne weiteren Zusatz von euch getan, da ihr von `PApplet`erbt. In allen anderen "Subklassen" müsst ihr den Methodenkopf wie oben definiert schreiben. Dabei müsst ihr im Funktionskörper alle Methoden zum Zeichnen auf `g` anwenden. Hier ein kurzes Beispiel:
+Bei `PGraphics` handelt es sich um das Objekt, auf welchem ihr zeichnet. In eurer Hauptklasse wird dies ohne weiteren Zusatz von euch getan, da ihr von `PApplet`erbt. In allen anderen "Subklassen" müsst ihr den Methodenkopf wie oben definiert schreiben. Dabei müsst ihr im Funktionskörper alle Methoden zum Zeichnen auf `g` anwenden. Hier ein kurzes Beispiel:
 
 ```java
 public void draw(PGraphics g) {
@@ -86,11 +92,11 @@ Aufgerufen wird diese `draw`-Methode von eurer Hauptklasse dann wie folgt:
 
 ```java
 public void draw() {
-    <className>.draw(super.g);
+    <instanceVariableName>.draw(super.g);
 }
 ```
 
-> `<className>` ist dabei durch den Klassennamen der anderen `draw`-Methode auszutauschen!
+> `<instanceVariableName>` ist dabei durch den Namen einer Instanzvariable der anderen Klasse zu ersetzen, welche die gewünschte `draw`-Methode enthält.
 
 #### Ein längeres und vollständiges Beispiel
 Um den Ablauf von mehreren `draw `-Methoden zu verdeutlichen, findet ihr [hier](Blockbreaker/) ein vollständiges Beispiel, welches von mir im Rahmen der Projektwoche im Wintersemester 2019/2020 entstanden ist. Dieses ist vollständig lauffähig.
