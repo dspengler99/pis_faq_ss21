@@ -7,6 +7,30 @@ Grundsätzlich ist es wichtig den Source-Code direkt zu Beginn eines Projekts ri
 
 Auch ist es wichtig, die einzelnen Projekte voneinander zu trennen. So ist es z.B. keine gute Struktur, wenn ihr ein Projekt aufsetzt, in welchem ihr den Code von mehreren Projekten ablegt. Legt lieber für jedes einzelne Projekt ein neues Projekt mit der IDE eurer Wahl an.
 
+### Anwendungskern und Interaktionsklasse - Wofür?
+
+#### Was gehört zum Anwendungskern?
+Der Anwendungskern besteht grundsätzlich aus allen Methoden und Variablen, welche ein Spiel für den Logikteil benötigt. Bei dem Spiel Tick-Tack-Toe wären dies unter anderem:
+* board: Variable, welche das aktuelle Spielfeld hält.
+* move(...): Methode, welche einen Zug durchführt.
+* isGameOver(...): Methode, welche prüft, ob das Spiel vorbei ist oder ob noch Züge gemacht werden dürfen.
+
+> Bei den hier angegebenen Beispielen handelt es sich nicht um konkrete Java-Deklarationen und Implementierungen, sondern lediglich um beispielhafte Nennungen von Dingen, die in einem Anwendungskern enthalten sein sollten.
+
+Wichtig ist außerdem, dass der Anwendungskern keinerlei Ausgaben enthält und auch nicht in irgendeiner Form das Aussehen der späteren _Anwendung bestimmt.
+
+#### Was gehört zur Interaktionsklasse?
+Zur Interaktionsklasse gehört alles, was mit der Darstellung des Spiels zu tun hat. Dabei darf und soll die Interaktionsklasse auf den Anwendungskern zurückgreifen können. Eine Interaktionsklasse kann unter anderem die folgenden Methoden haben:
+* draw(...): Zeichnen einer Darstellung
+* mouseClicked(...): Methode, welche aufgerufen wird, sobald eine Maustaste gedrückt wurde.
+* askForInput(): Eine Methode, die bei einer Konsolenumsetzung nach einer Eingabe fragt.
+* printBoard(...): Eine Methode, welche bei einer Konsolenumsetzung das Board und evtl. andere wichtige Informationen ausgibt. Hier kann beispielsweise eine toString()-Methode des Anwendungskerns verwendet werden.
+
+#### Wozu die Trennung?
+Ganz simpel gesagt, gibt uns die genannte Trennung zwei große Vorteile:
+1. Der Code ist übersichtlicher und besser strukturiert.
+2. Wir können den Anwendungskern für zwei verschiedene Darstellungen verwenden. Beispielsweise ist es möglich eine CLI und eine GUI mit dem gleichen Kern zu schreiben.
+
 ## Java
 
 ### Was sind "sprechende" Variablennamen und wieso sollte ich sie verwenden?
