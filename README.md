@@ -125,3 +125,12 @@ public void draw() {
 #### Ein längeres und vollständiges Beispiel
 Um den Ablauf von mehreren `draw `-Methoden zu verdeutlichen, findet ihr [hier](Blockbreaker/) ein vollständiges Beispiel, welches von mir im Rahmen der Projektwoche im Wintersemester 2019/2020 entstanden ist. Dieses ist vollständig lauffähig.
 
+#### Alternative: toDraw()-Methode für Objekte
+Ihr könnt auch, um Code sauber zu strukturieren, einem Objekt eine toDraw()-Methode hinzufügen, damit es sich selbst auf einer Zeichenfläche repräsentieren kann. Um den Code sauber zu strukturieren, bietet es sich an, diese Methode in eine Klasse auszulagern, die von dem darzustellenden Objekt erbt. Wie das genau aussieht, könnt ihr [hier](MultipleDraw/) nachschauen. Dabei handelt es sich um ein kleines Beispielprogramm, welches ihr mittels `gradle run` ausführen könnt.
+
+### Tests mittels Gradle durchführen
+Bei der Erstellung eines Gradle-Projekts könnt ihr Unit-Tests direkt einbinden und später ganz leicht ausführen. Dazu müsst ihr später nur `gradle test` ausführen. Wie ihr ein Projekt aufsetzt, welches die Tests unterstützt, seht ihr [in diesem Video](https://youtu.be/oXNCF9PbYug?t=319). Die Wiedergabe beginnt dabei ab dem Zeitpunkt der Projekterstellung. Solltet ihr Gradle noch nicht installiert haben, so solltet ihr dies natürlich vorher erledigen.
+
+Nach der Erstellung eures Projekts, findet ihr im Ordner `app/src/test/java` eine Datei, welche verschiedene Methoden enthält, die unterschiedliche Funktionalität testen. Wie solche Tests genau geschrieben werden, seht ihr beispielsweise im Projekt [MultipleDraw](MultipleDraw).
+
+Wie bereits erwähnt, könnt ihr die Tests, nach dem implementieren, mittels `gradle test` starten und bekommt eine Übersicht, wenn ein Test fehlgeschlagen ist.
